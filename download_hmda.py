@@ -1,23 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""下载官方 HMDA 静态快照，流式提取研究字段。Python 3.10+，无需安装第三方库。
 
-默认处理2021-2025五个年度，输出仅包含主申请人applicant_age为<25的记录。
-年龄筛选在本地进行，仍须下载每年的全国ZIP。
-
-例子：
-    python download_hmda.py
-    python download_hmda.py --years 2025
-    python download_hmda.py --years 2021-2025
-    python download_hmda.py --years 2023 2024 2025 --states CA NY
-    python download_hmda.py --years 2021-2025 --check
-
-主来源： https://ffiec.cfpb.gov/data-publication/
-文件服务： https://files.ffiec.cfpb.gov/static-data/snapshot/
-官方链接定义：
-https://github.com/cfpb/hmda-frontend/blob/master/src/data-publication/constants/snapshot-dataset.jsx
-
-仅筛选主申请人年龄<25；不把 NA/Exempt 变成0，不擅自合并申请记录。
 """
 
 from __future__ import annotations
