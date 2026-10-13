@@ -1,0 +1,160 @@
+% Converted from Paper(1).docx; all findings, hypotheses and numeric values preserved.
+% Self-contained and compatible with pdfLaTeX / Overleaf.
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array,graphicx,float}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage[hidelinks]{hyperref}
+\usepackage[font=small,labelfont=bf]{caption}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0.35em}
+\setstretch{1.14}
+\setlength{\emergencystretch}{3em}
+\begin{document}
+\section*{Literature review and research hypothesis}
+The current research mainly examines the economic impact of artificial intelligence (AI) from three aspects: capital and credit markets, corporate behavior, and the labor market. Firstly, AI alters the allocation of credit by improving information processing and risk prediction efficiency, but it may also exacerbate the financing disparities among borrowing groups (Andreas Fuster et al., 2022, Sabrina T Howell et al., 2024). Secondly, corporate AI investment promotes growth through product innovation, while also changing corporate competition and disclosure behaviors (Tania Babina et al., 2024, Elizabeth Blankespoor et al., 2026, Emilio Calvano et al., 2020). Finally, AI can enhance labor productivity, but task automation may also replace some jobs, depress wages, and exacerbate income inequality (Daron Acemoglu and Pascual Restrepo, 2022, David Autor et al., 2024, Erik Brynjolfsson et al., 2025). However, how the risks triggered by AI further affect the availability of household credit remains to be directly tested.
+
+Recent research articles have found that the application of industrial robots , automation and AI has led to a decrease in local wages and employment(Daron Acemoglu et al., 2022, Daron Acemoglu and Pascual Restrepo, 2020). At the same time, the application of AI has reduced the recruitment of non-AI positions in enterprises, and at the same time, data capital will exert a squeezing effect on the share of labor income(Simona Abis and Laura Veldkamp, 2024, Menaka Hampole et al., 2025). Joanne W Hsu et al. (2018)'s research shows that a worker experiencing an unemployment shock or a sudden drop in income can cause a household to default on its home loan. Young borrowers with limited employment histories, savings, and credit records may be particularly sensitive to employment uncertainty. In regions with greater AI exposure, reduced employment opportunities and less stable earnings may weaken applicants' repayment capacity and increase their perceived credit risk. Consequently, lenders may become less willing to approve mortgage applications from young borrowers. Based on this reasoning, this paper proposes the following hypothesis:
+
+\noindent\textbf{H1: In regions with higher exposure to AI, the probability of approval for young people's housing loan applications is lower.}\par
+Furthermore, if the labor-displacement effects of AI outweigh productivity-driven employment creation, reductions in labor demand and earnings may negatively affect regional income. Although technological innovation can generate additional income through firm growth, these gains may not fully compensate for the income losses experienced by displaced workers. Therefore, regional income outcomes may depend on the distribution of AI-related gains and losses across workers and firms. This motivates the following hypothesis:
+
+\noindent\textbf{H2: Regions with higher exposure to AI will result in a decrease in the per capita income of that region.}\par
+The task substitution theory holds that the development of automation can enable enterprises to complete some tasks originally undertaken by workers at a lower cost, thus reducing the demand for relevant labor (Daron Acemoglu and Pascual Restrepo, 2022). AI can also be regarded as a branch of automation. For occupations with high AI exposure, their work tasks are more likely to be replaced by AI technology, and enterprises may reduce labor costs by reducing recruitment and cutting jobs. While AI may also create new jobs by increasing productivity, task-substitution effects may dominate in the short term, reducing employment in related occupations. Therefore, this paper proposes the following research hypotheses:
+
+\noindent\textbf{H3: The higher the AI exposure level is, the fewer the number of employed people in that region will be.}\par
+\begin{table}[H]
+\centering
+\caption{Descriptive Statistics}
+\label{tab:descriptive}
+\small
+\renewcommand{\arraystretch}{1.06}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+ & \textbf{N} & \textbf{Mean} & \textbf{SD} & \textbf{P25} & \textbf{Median} & \textbf{P75} \\
+\midrule
+approved & 1336768 & 0.812 & 0.390 & 1.000 & 1.000 & 1.000 \\
+ai\_exposure & 1664252 & -0.073 & 0.261 & -0.255 & -0.074 & 0.118 \\
+group(derived\_race) & 1690688 & 8.217 & 1.748 & 8.000 & 9.000 & 9.000 \\
+loan\_type & 1690688 & 1.496 & 0.809 & 1.000 & 1.000 & 2.000 \\
+loan\_purpose & 1690688 & 3.567 & 8.317 & 1.000 & 1.000 & 1.000 \\
+income & 1648213 & 74.676 & 53.556 & 45.000 & 62.000 & 86.000 \\
+occupancy\_type & 1690688 & 1.043 & 0.284 & 1.000 & 1.000 & 1.000 \\
+per\_capita\_income\_usd & 1659784 & 37366.550 & 8222.507 & 31661.000 & 36376.000 & 41703.000 \\
+Employment & 883713 & 563790.558 & 708088.801 & 145700.000 & 287750.000 & 697225.000 \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+This article is based on the paper of Jonathan Lee et al. (2026), and controls for county Lender $\times$ Year Fixed Effects. This helps to incorporate the changing characteristics of lending institutions over time, such as bank capital, size, risk appetite, management quality, regulatory differences, and business models.
+
+The baseline model is:
+
+
+\begin{equation}\label{eq:baseline}
+Approved_{ibct} = \beta AIExposure_{i} + \gamma X_{i} + \mu_{c} + \delta_{bt} + \varepsilon_{ibct}
+\end{equation}
+The results are shown in Table 2 . The exposure to county-level AI significantly reduces the likelihood of mortgage applications being approved by young people. Therefore, Hypothesis 1 is valid.
+
+\begin{table}[H]
+\centering
+\caption{Baseline Results}
+\label{tab:baseline}
+\small
+\renewcommand{\arraystretch}{1.06}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+ & \textbf{(1)} & \textbf{(2)} \\
+\midrule
+ & \textit{approved} & \textit{approved} \\
+\midrule
+ai\_exposure & -0.014\textsuperscript{**} & -0.013\textsuperscript{**} \\
+ & (-2.42) & (-2.01) \\
+race\_cat &  & 0.011\textsuperscript{***} \\
+ &  & (29.99) \\
+loan\_type &  & -0.005\textsuperscript{***} \\
+ &  & (-6.09) \\
+loan\_purpose &  & -0.004\textsuperscript{***} \\
+ &  & (-36.32) \\
+income &  & 0.001\textsuperscript{***} \\
+ &  & (49.91) \\
+occupancy\_type &  & -0.044\textsuperscript{***} \\
+ &  & (-23.05) \\
+construction\_method &  & -0.116\textsuperscript{***} \\
+ &  & (-28.40) \\
+\_cons & 0.816\textsuperscript{***} & 0.872\textsuperscript{***} \\
+ & (1993.06) & (143.21) \\
+County\_id & Yes & Yes \\
+\addlinespace[2pt]
+Bank\_id\#activity\_year & Yes & Yes \\
+Observations & 1,290,957 & 1,290,957 \\
+Adjusted R-squared & 0.303 & 0.319 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The results in Table 3 indicate that AI exposure will reduce the local per capita income. Therefore, hypothesis H2 is confirmed. And also we can find that AI exposure will reduce the amount of employment(Although the coefficient is not significant, the possible reason is that we were examining the total employment figures rather than those specifically for graduates.)
+
+\begin{table}[H]
+\centering
+\caption{Mechanism}
+\label{tab:mechanism}
+\small
+\renewcommand{\arraystretch}{1.06}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+ & \textbf{(1)} & \textbf{(2)} \\
+\midrule
+ & \textit{Per capita income} & \textit{Employment} \\
+\midrule
+ai\_exposure & -621.063\textsuperscript{***} & -94526.955 \\
+ & (-3.50) & (-1.21) \\
+race\_cat & -0.770 & 20.309 \\
+ & (-1.34) & (1.13) \\
+loan\_type & 22.269\textsuperscript{***} & 616.985\textsuperscript{***} \\
+ & (8.66) & (2.69) \\
+loan\_purpose & -2.075\textsuperscript{***} & -25.907 \\
+ & (-7.25) & (-0.78) \\
+income & 0.276\textsuperscript{***} & 2.329 \\
+ & (9.16) & (1.42) \\
+occupancy\_type & -8.275\textsuperscript{**} & -221.455\textsuperscript{**} \\
+ & (-2.45) & (-2.49) \\
+construction\_method & -10.987\textsuperscript{**} & 145.422 \\
+ & (-2.23) & (0.73) \\
+\_cons & 37301.087\textsuperscript{***} & 567446.539\textsuperscript{***} \\
+ & (2255.40) & (122.98) \\
+County\_id & Yes & Yes \\
+\addlinespace[2pt]
+Bank\_id\#activity\_year & Yes & Yes \\
+Observations & 1,615,644 & 856382 \\
+Adjusted R-squared & 0.992 & 0.999 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\clearpage
+\section*{References}
+\noindent\hangindent=1.5em\hangafter=1 Abis, Simona and Laura Veldkamp. 2024. "The Changing Economics of Knowledge Production." The review of financial studies, 37(1), 89-118.\par
+\noindent\hangindent=1.5em\hangafter=1 Acemoglu, Daron; David Autor; Jonathon Hazell and Pascual Restrepo. 2022. "Artificial Intelligence and Jobs: Evidence from Online Vacancies." Journal of Labor Economics, 40(S1), S293-S340.\par
+\noindent\hangindent=1.5em\hangafter=1 Acemoglu, Daron and Pascual Restrepo. 2020. "Robots and Jobs: Evidence from Us Labor Markets." Journal of Political Economy, 128(6), 2188-244.\par
+\noindent\hangindent=1.5em\hangafter=1 \_\_\_\_. 2022. "Tasks, Automation, and the Rise in Us Wage Inequality." Econometrica, 90(5), 1973-2016.\par
+\noindent\hangindent=1.5em\hangafter=1 Autor, David; Caroline Chin; Anna Salomons and Bryan Seegmiller. 2024. "New Frontiers: The Origins and Content of New Work, 1940--2018." The Quarterly Journal of Economics, 139(3), 1399-465.\par
+\noindent\hangindent=1.5em\hangafter=1 Babina, Tania; Anastassia Fedyk; Alex He and James Hodson. 2024. "Artificial Intelligence, Firm Growth, and Product Innovation." Journal of Financial Economics, 151, 103745.\par
+\noindent\hangindent=1.5em\hangafter=1 Blankespoor, Elizabeth; Ed Dehaan and Qianqian Li. 2026. "Generative Ai in Financial Reporting." Journal of Accounting Research, 64(3), 1189-232.\par
+\noindent\hangindent=1.5em\hangafter=1 Brynjolfsson, Erik; Danielle Li and Lindsey Raymond. 2025. "Generative Ai at Work." The Quarterly Journal of Economics, 140(2), 889-942.\par
+\noindent\hangindent=1.5em\hangafter=1 Calvano, Emilio; Giacomo Calzolari; Vincenzo Denicolo and Sergio Pastorello. 2020. "Artificial Intelligence, Algorithmic Pricing, and Collusion." American economic review, 110(10), 3267-97.\par
+\noindent\hangindent=1.5em\hangafter=1 Fuster, Andreas; Paul Goldsmith-Pinkham; Tarun Ramadorai and Ansgar Walther. 2022. "Predictably Unequal? The Effects of Machine Learning on Credit Markets." The Journal of Finance, 77(1), 5-47.\par
+\noindent\hangindent=1.5em\hangafter=1 Hampole, Menaka; Dimitris Papanikolaou; Lawrence DW Schmidt and Bryan Seegmiller. 2025. "Artificial Intelligence and the Labor Market," National Bureau of Economic Research,\par
+\noindent\hangindent=1.5em\hangafter=1 Howell, Sabrina T; Theresa Kuchler; David Snitkof; Johannes Stroebel and Jun Wong. 2024. "Lender Automation and Racial Disparities in Credit Access." The Journal of Finance, 79(2), 1457-512.\par
+\noindent\hangindent=1.5em\hangafter=1 Hsu, Joanne W; David A Matsa and Brian T Melzer. 2018. "Unemployment Insurance as a Housing Market Stabilizer." American economic review, 108(1), 49-81.\par
+\noindent\hangindent=1.5em\hangafter=1 Lee, Jonathan; Duc Duy Nguyen and Huyen Nguyen. 2026. "Regulating Zombie Mortgages." Review of Finance, rfag008.\par
+
+\end{document}
